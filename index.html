@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GreenHub</title>
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#223B2D">
+<style>
+  html,body{margin:0;height:100%;background:#223B2D;color:#D4F08C;font-family:system-ui,sans-serif}
+  body{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px}
+  img{width:96px;height:96px;border-radius:24px}
+  a{color:#D4F08C}
+</style>
+</head>
+<body>
+<img src="icon-192.png" alt="GH">
+<p id="msg">Abriendo GreenHub…</p>
+<script>
+  const DESTINO = "https://claude.ai/artifact/BUKS8xKG422TbJXVisPnXe";
+  if ('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js').catch(()=>{});
+  const instalada = matchMedia('(display-mode: standalone)').matches;
+  if (instalada) {
+    location.replace(DESTINO);
+  } else {
+    document.getElementById('msg').innerHTML =
+      'Para instalar: menú ⋮ de Chrome → <b>Instalar app</b>.<br><br><a href="'+DESTINO+'">Abrir GreenHub sin instalar</a>';
+  }
+</script>
+</body>
+</html>
